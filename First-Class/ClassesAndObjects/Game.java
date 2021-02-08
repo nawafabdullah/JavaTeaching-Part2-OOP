@@ -4,7 +4,7 @@ import java.util.Scanner;
 // functions inside classes are called classes 'methods'
 // explain what objects are 
 
-/* HomeWork => add defense power and use totalPower = enemy's attck powers - own player's defense power */
+/* HomeWork => add defense power and use totalPower = enemy's attack powers - own player's defense power */
 
 public class Game {
 
@@ -13,19 +13,27 @@ public class Game {
         // Creates a reader instance which takes
         // input from standard input - keyboard
         Scanner reader = new Scanner(System.in);
-        String [] playerParams = {"Name", "Total Life Power", "AttackPower"}; 
-        
+        String[] playerParams = { "Name", "Total Life Power", "Attack Power" };
+
         Player firstPlayer = new Player();
-        Player secondPlayer = new Player(); 
+        Player secondPlayer = new Player();
 
-        for (int i = 0; i < playerParams.length; i++) { 
+        String userInput;
+        for (int i = 0; i < playerParams.length; i++) {
+            System.out.println("please enter the player's " + playerPrams[i]);
 
-        } 
-        System.out.println("Please enter player's TOTAL LIFE POWER ");
-        String name = reader.nextLine();
-        // println() prints the following line to the output screen
+            userInput = reader.nextLine();
+            if (i == 0)
+                firstPlayer.playerName = userInput;
+            else if (i == 1)
+                firstPlayer.totalPower = Double.parseDouble(userInput);
+            else
+                firstPlayer.attackPower = Double.parseDouble(userInput);
+            ;
+        }
 
-        System.out.println("Hello " + name + "\n I hope that you will enjoy the lesson :)");
+        System.out.println("Player's name: " + firstPlayer.playerName + "\n Player's Total Life Power: "
+                + firstPlayer.totalPower + "\n Player's Attack Power: " + firstPlayer.attackPower);
 
     }
 }
@@ -34,7 +42,7 @@ class Player {
     String playerName;
     double totalPower, attackPower;
 
-    public Pleyer(String name, double energy, double attack) { 
+    public Player(String name, double energy, double attack) {
         playerName = name;
         totalPower = energy;
         attackPower = attack;
